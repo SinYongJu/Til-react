@@ -4,10 +4,19 @@ import TodoItem from '../TodoItem'
 
 class TodoList extends Component {
     render() {
+        const { todos, onToggle ,onRemove, onModify} = this.props;
+        const todoList = todos.map( todo =>{
+            return  <TodoItem 
+                            key={ todo.id }
+                            done={ todo.done } 
+                            onToggle={() => onToggle(todo.id)} 
+                            onRemove={() => onRemove(todo.id)}
+                            onDoubleClick={() => onModify(todo.id)}
+                    >{ todo.text }</TodoItem>
+        })
         return (
             <div>
-                <TodoItem>리엑트 공부하기</TodoItem>
-                <TodoItem>scss 꼭 달기</TodoItem>
+               { todoList }
             </div>
         );
     }

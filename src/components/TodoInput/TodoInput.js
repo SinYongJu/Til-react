@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import styles from './TodoInput.scss';
+import classNames from 'classnames/bind';
 
-
+const cx = classNames.bind(styles);
 /*
 
     input과 버튼이 함께 있는 컴포 넌트
@@ -18,11 +20,11 @@ const TodoInput = ({value, onChange, onInsert}) => {
         }
     }
         return (
-            <div>
+            <div className={cx('todo-input')}>
                 <input 
                     onChange = {onChange} value={value} onKeyPress = {handleKeyPress}
                 ></input>                
-                <button type="button" onClick={onInsert} >추가</button>
+                <button type="button" className={cx('add-button')} onClick={onInsert} >추가</button>
             </div>
         );
 }
